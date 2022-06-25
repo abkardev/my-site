@@ -7,16 +7,14 @@
   overflow-y: auto;
 
    @include small-up{
-     height: auto;
-     position: relative;
-     overflow: hidden;
+     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
    }
 
    .top-tags {
     bottom: auto;
     top: 0;
      @include small-up{
-      
       top:76px;
      }
   }
@@ -89,7 +87,6 @@
       font-size: 53px;
       font-family: 'Coolvetica';
       color: #d4af37;
-      ;
       font-weight: 400;
       margin-top: 0;
       position: relative;

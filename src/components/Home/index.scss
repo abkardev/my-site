@@ -1,6 +1,7 @@
 @import '../../responsive-style/variables.scss';
 
-.home-page {
+.container.home-page {
+ 
   .text-zone {
     position: absolute;
     left: 10%;
@@ -36,6 +37,9 @@
       margin-top: -40px;
       left: -15px;
       opacity: 0.6;
+      @include small-up{
+        left:15px;
+        }
     }
 
     &:after {
@@ -48,6 +52,10 @@
       margin-left: 20px;
       animation: fadeIn 1s 1.7s backwards;
       opacity: 0.6;
+      @include small-up{
+        right:15px;
+        margin-top: 36px;
+        }
     }
 
     img {
@@ -94,4 +102,16 @@
       color: #333;
     }
   }
+  .bottom-tags {
+    bottom: 0;
+    top: auto;
+    @include small-up{
+    
+    clear: both;
+    float: left;
+    margin-top: 50px;
+    bottom: 0%;
+ 
+    }
+   }
 }

@@ -1,11 +1,57 @@
 @import '../../responsive-style/variables.scss';
-.contact-page{
+
+.container.contact-page {
+ @include small-up{
+  height: 100%;
+ }
+ .top-tags {
+    bottom: auto;
+    top: 50px;
+     @include small-up{ 
+      top:8%;
+     }
+ }
 
 
-.contact-form {
+ .bottom-tags {
+   bottom: 0;
+   top: auto;
+   @include small-up{
+   position: absolute;
+   clear: both;
+   float: left;
+   margin-top: 0px;
+   bottom: 0;
+
+   }
+  }
+  .tags {
+    color: #d4af37;
+    opacity: 0.6;
+    position: absolute;
+    left: -80px;
+    font-size: 18px;
+    font-family: 'La Belle Aurore', cursive;
+ 
+     @include small-up{
+       margin-left: 30px;
+       left: 0;
+     }
+   }
+   .contact-title{
+    top:15px;
+    @include small-up{
+      top:-50px
+    }
+   }
+ .contact-form {
   width: 100%;
   margin-top: 20px;
-
+ @include small-up{
+  width: 90%;
+  margin:0 auto;
+  padding: 30px 0;
+ }
   ul {
     padding: 0;
     margin: 0;
@@ -79,9 +125,9 @@
     text-align: center;
     margin-right: 10px;
   }
-}
+ }
 
-.map-wrap {
+ .map-wrap {
   background: rgba(8, 253, 216, 0.1);
   float: right;
   width: 53%;
@@ -94,18 +140,18 @@
     height: 320px;
     clear: both;
   }
-}
+ }
 
-.leaflet-container {
+ .leaflet-container {
   position: relative;
   width: 100%;
   height: 100%;
   opacity: 0;
   animation: backInRight 1s 1.2s;
   animation-fill-mode: forwards;
-}
+ }
 
-.info-map {
+ .info-map {
   position: absolute;
   background: #000;
   top: 50px;
@@ -131,12 +177,12 @@
 
   }
 
-  span {
+   span {
     font-size: 16px;
 
     span {
       color: #d4af37;
     }
+   }
   }
-}
 }

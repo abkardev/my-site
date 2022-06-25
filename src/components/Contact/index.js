@@ -40,9 +40,9 @@ const Contact = () => {
   return (
     <>
       <div className="container contact-page">
-      <span className="tags top-tags">&lt;body&gt;</span>
+       <span className="tags top-tags">&lt;body&gt;</span>
         <div className="text-zone">
-          <h1>
+          <h1 className="contact-title">
             <AnimatedLetters
               letterClass={letterClass}
               strArray={['C', 'o', 'n', 't', 'a', 'c', 't', ' ', 'm', 'e']}
@@ -108,14 +108,13 @@ const Contact = () => {
             </Marker>
           </MapContainer>
         </div> */}
+        <span className="tags bottom-tags">
+                  &lt;/body&gt;
+                  <br />
+                  <span className="bottom-tag-html">&lt;/html&gt;</span>
+        </span> 
       </div>
-      <span className="tags bottom-tags">
-          &lt;/body&gt;
-          <br />
-          <span className="bottom-tag-html">&lt;/html&gt;</span>
-        </span>
       <Loader type="ball-grid-pulse" />
-      
     </>
   )
 }
