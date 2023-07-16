@@ -41,9 +41,8 @@ const About = () => {
           I believe those are two qualities that you need in order to work in the tech industry. Not everything works perfectly all the time. One must be willing and able to think outside of the box, test the limits, and never stop learning...and that is just the type of person I am.
           </p>
           <p>
-            If I need to define myself in one sentence that would be a family
-            person, father of a beautiful daughter, a sports fanatic,
-            photography enthusiast, and tech-obsessed!!!
+            If I need to define myself in one sentence that would be a football obsessed,
+            reading enthusiast,I am a people person, Energetic and folllowing tech news!!!
           </p>
         </div>
         <div className="stage">

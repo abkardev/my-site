@@ -73,7 +73,7 @@ const Portfolio = () => {
                   <span className="bottom-tag-html">&lt;/html&gt;</span>
               </span> 
             </div>
-           <Louder type="ball-grid-pulse"/>  
+           {/* <Louder type="ball-grid-pulse"/>   */}
        </>
    )
 
