@@ -7,6 +7,7 @@ import {
   faLinkedin,
   faGithub,
   faInstagram,
+  faTiktok
  
 
 } from '@fortawesome/free-brands-svg-icons'
@@ -64,6 +65,15 @@ const Sidebar = () => {
             <FontAwesomeIcon icon={faGithub} color="#4d4d4e" />
           </a>
         </li>
+        <li>
+          <a
+            href="https://www.tiktok.com/abkarcode"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <FontAwesomeIcon icon={faTiktok} color="#4d4d4e" />
+          </a>
+        </li>      
         <li>
           <a
             href="https://www.instagram.com/abkarcode"
