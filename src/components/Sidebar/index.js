@@ -67,7 +67,7 @@ const Sidebar = () => {
         </li>
         <li>
           <a
-            href="https://www.tiktok.com/abkarcode"
+            href="https://www.tiktok.com/@abkarcode"
             rel="noreferrer"
             target="_blank"
           >
