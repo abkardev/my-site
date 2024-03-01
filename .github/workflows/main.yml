@@ -3,22 +3,13 @@ name: Deploy to Hostinger
 on:
   push:
     branches:
-      - main
+      - main # Change this to your main branch name
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16.x]
-
     steps:
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-
       - name: Checkout repository
         uses: actions/checkout@v2
 
@@ -30,9 +21,10 @@ jobs:
       - name: Deploy to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@3.1.2
         with:
-          server: ftp.abkarcode.com
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /public_html
+          server: ftp.abkarcode.com # Change this to your Hostinger FTP server
+          username: ${{ secrets.FTP_USERNAME }} # Add FTP username as a secret in GitHub repository settings
+          password: ${{ secrets.FTP_PASSWORD }} # Add FTP password as a secret in GitHub repository settings
+          server-dir: /public_html # Change this to the directory where your website should be hosted
           local-dir: build
+
 
