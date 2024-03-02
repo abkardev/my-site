@@ -2,32 +2,36 @@ name: Deploy to Hostinger
 
 on:
   push:
-    branches: main   # Change to your desired branch
+    branches: [ main ]  # Trigger the workflow on pushes to the main branch
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Replace with a preferred runner if needed
+
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3  # Checkout your code from GitHub
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+      - name: Install dependencies (adjust if you use yarn)
+        run: npm install  # Install required dependencies for building
+
+      - name: Build the React app
+        run: npm run build  # Build the app for production (replace with yarn build if needed)
+
+      - name: Create a deployment archive
+        uses: actions/upload-artifact@v3  # Create an artifact for deployment files
         with:
-          node-version: 16  # Adjust based on your React app's Node.js requirement
+          name: build-artifact
+          path: build  # Replace with your build directory path if different
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build the app
-        run: npm run build
-
-      - name: Deploy to Hostinger (using a reliable alternative)
-        uses: reliable-scp-action@v3 # Replace with actual action and version
+      - name: Deploy to Hostinger
+        uses: appleboy/scp-action@v1  # Use the scp-action to deploy
         with:
-          host: ftp.abkarcose.com # Replace with your Hostinger SSH host
-          username: ${{ secrets.FTP_USER}}  # Replace with your Hostinger username
-          privateKey: ${{ secrets.FTP_PASSWORD}}
+          host: ftp.abkarcode.com  # Replace with your Hostinger server hostname
+          username: ${{ secrets.FTP_USER }}  # Replace with your Hostinger username
+          password: ${{ secrets.FTP_PASSWORD }}  # Or use an SSH key (recommended)
           port: 21  # Standard SSH port
-          source: "build/**"  # Upload all files from the build folder
-          target: "/path/to/your/website/public_html"
+          source: "build-artifact/**/*.*"  # Upload all files from the build artifact
+          target: "public_html"  # Replace with your deployment directory on Hostinger
+
+
 
