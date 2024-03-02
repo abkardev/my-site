@@ -2,7 +2,7 @@ name: Deploy React App
 
 on:
   push:
-    branches: [ main ]  # Trigger on pushes to the master branch (adjust as needed)
+    branches:  main   # Trigger on pushes to the master branch (adjust as needed)
 
 jobs:
   deploy:
