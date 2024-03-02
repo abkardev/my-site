@@ -1,33 +1,27 @@
-name: Deploy React App
-
-on:
-  push:
-    branches:  main   # Trigger on pushes to the master branch (adjust as needed)
-
+on: push
+name:  Deploy website on push
 jobs:
-  deploy:
-    runs-on: ubuntu-latest  # Run the workflow on Ubuntu machines
-
+  web-deploy:
+    name:  Deploy
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3  # Checkout the repository code
+    - name:  Get latest code
+      uses: actions/checkout@v4
 
-      - name: Use Node.js 16  # Specify Node.js version (adjust as needed)
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build production files
-        run: npm run build  # Replace with your build command
-
-      - name: Deploy to Hostinger
-        uses: appleboy/ftp-deploy@v1  # Action for FTP deployment
-        with:
-          server: ftp.abkarcode.com # Replace with your Hostinger server address
-          username: ${{ secrets.FTP_USER }}  # Replace with your Hostinger username
-          password: ${{ secrets.FTP_PASSWORD }}  # Access password stored in a secret
-          deploy_dir: /path/to/deployment/directory  # Replace with your deployment path
-          local_dir: build  # Use the build folder containing production-ready files
+    - name: Use Node.js 16
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+      
+    - name: 🔨 Build Project
+      run: |
+        npm install
+        npm run build
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ftp.abkarcode.com
+        username: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PASSWORD}}
 
