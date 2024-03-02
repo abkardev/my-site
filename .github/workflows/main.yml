@@ -1,28 +1,33 @@
-on: push
-name:  Deploy website on push
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches: [ main ]  # Change to your desired branch
+
 jobs:
-  web-deploy:
-    name:  Deploy
+  deploy:
     runs-on: ubuntu-latest
     steps:
-    - name:  Get latest code
-      uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
-    - name: Use Node.js 16
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16'
-      
-    - name: Build Project
-      run: |
-        npm install --loglevel=error
-        npm audit fix --force
-        npm run build
-    
-    - name: Sync files
-      uses: abkarcode/FTP-Deploy-Action@v4.3.5
-      with:
-        server: ftp.abkarcode.com
-        username: ${{ secrets.FTP_USER }}
-        password: ${{ secrets.FTP_PASSWORD}}
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16  # Adjust based on your React app's Node.js requirement
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the app
+        run: npm run build
+
+      - name: Deploy to Hostinger
+        uses: appleboy/scp-action@v1
+        with:
+          host: ftp.abkarcode.com  # Replace with your Hostinger SSH host
+          username: ${{ secrets.FTP_USER}}  # Replace with your Hostinger username
+          privateKey: ${{ secrets.FTP_PASSWORD }}
+          port: 21 # Standard SSH port
+          source: "build/**"  # Upload all files from the build folder
+          target: "/path/to/your/website/on/hostinger"  # Replace with your website directory on Hostinger
 
