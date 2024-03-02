@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4 # Checkout your code from GitHub
 
       - name: Install dependencies (adjust if you use yarn)
-        run: npm install  # Install required dependencies for building
+        run: npm install --loglevel=error # Install required dependencies for building
 
       - name: Build the React app
         run: npm run build  # Build the app for production (replace with yarn build if needed)
