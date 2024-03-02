@@ -16,10 +16,11 @@ jobs:
     - name: Build Project
       run: |
         npm install --loglevel=error
+        npm audit fix --force
         npm run build
     
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+    - name: Sync files
+      uses: abkarcode/FTP-Deploy-Action@v4.3.5
       with:
         server: ftp.abkarcode.com
         username: ${{ secrets.FTP_USER }}
