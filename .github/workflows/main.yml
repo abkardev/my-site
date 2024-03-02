@@ -2,36 +2,34 @@ name: Deploy to Hostinger
 
 on:
   push:
-    branches: [ main ]  # Trigger the workflow on pushes to the main branch
+    branches:
+      - main # Change this to your main branch
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  # Replace with a preferred runner if needed
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3 # Checkout your code from GitHub
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Install dependencies (adjust if you use yarn)
-        run: npm install --loglevel=error # Install required dependencies for building
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
 
-      - name: Build the React app
-        run: npm run build  # Build the app for production (replace with yarn build if needed)
+    - name: Install dependencies
+      run: npm install
 
-      - name: Create a deployment archive
-        uses: actions/upload-artifact@v3  # Create an artifact for deployment files
-        with:
-          name: build-artifact
-          path: build  # Replace with your build directory path if different
+    - name: Build
+      run: npm run build
 
-      - name: Deploy to Hostinger
-        uses: appleboy/scp-action@v0.1.7 # Use the scp-action to deploy
-        with:
-          host: ftp.abkarcode.com  # Replace with your Hostinger server hostname
-          username: ${{ secrets.FTP_USERNAME }}  # Replace with your Hostinger username
-          password: ${{ secrets.FTP_PASSWORD }}  # Or use an SSH key (recommended)
-          port: 21  # Standard SSH port
-          source: "build-artifact/**/*.*"  # Upload all files from the build artifact
-          target: "/home/u854838731/domains/abkarcode.com/public_html"  # Replace with your deployment directory on Hostinger
-
-
+    - name: Deploy to Hostinger
+      uses: SamKirkland/FTP-Deploy-Action@3.1.1
+      with:
+        server: ftp.abkarcode.com # Change this to your Hostinger server
+        username: ${{ secrets.FTP_USERNAME }} # Add your FTP username as a secret in GitHub repository settings
+        password: ${{ secrets.FTP_PASSWORD }} # Add your FTP password as a secret in GitHub repository settings
+        server-dir: /home/u854838731/domains/abkarcode.com/public_html # Change this to your hosting directory
+        local-dir: build # Change this if your build directory is named differently
 
