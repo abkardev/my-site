@@ -22,7 +22,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to Hostinger (using a reliable alternative)
-        uses: reliable-scp-action@v<latest_version>  # Replace with actual action and version
+        uses: reliable-scp-action@v3 # Replace with actual action and version
         with:
           host: ftp.abkarcose.com # Replace with your Hostinger SSH host
           username: ${{ secrets.FTP_USER}}  # Replace with your Hostinger username
