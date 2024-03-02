@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest  # Replace with a preferred runner if needed
 
     steps:
-      - uses: actions/checkout@v4 # Checkout your code from GitHub
+      - uses: actions/checkout@v3 # Checkout your code from GitHub
 
       - name: Install dependencies (adjust if you use yarn)
         run: npm install --loglevel=error # Install required dependencies for building
@@ -24,7 +24,7 @@ jobs:
           path: build  # Replace with your build directory path if different
 
       - name: Deploy to Hostinger
-        uses: appleboy/scp-action@v1 # Use the scp-action to deploy
+        uses: appleboy/scp-action@v0.1.7 # Use the scp-action to deploy
         with:
           host: ftp.abkarcode.com  # Replace with your Hostinger server hostname
           username: ${{ secrets.FTP_USERNAME }}  # Replace with your Hostinger username
