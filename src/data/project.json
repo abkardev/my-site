@@ -17,6 +17,22 @@
      },
      {
        
+       "title": "Lady's Ocean",
+       "description":"A modern e-store offering dermatologist-approved bleach creams to even skin tone and reduce hyperpigmentation.",
+       "desktopVersionImage":"",
+       "mobileVersionImage":"/site-images/projects-images/ladysocean.png",
+       "url":"https://manazel.vercel.app"
+     },
+     {
+       
+       "title":"Blue Beach Agency",
+       "description":"A digital marketing agency offering tailored solutions like social media management, SEO, PPC, and content marketing.",
+       "desktopVersionImage":"/site-images/projects-images/polis-d.png",
+       "mobileVersionImage":"/site-images/projects-images/bluebeachads.jpg",
+       "url":"https://abkardev.github.io/kaiser/"
+     },
+        {
+       
        "title": "Manazel",
        "description":"Manazel is realstate website for rent or buy properties in United Arab Emirates",
        "desktopVersionImage":"",
